@@ -46,7 +46,7 @@
           </div>
         </div>
 
-        <div class="col-xs-6">
+        <div class="col-md-6 col-xs-12">
           <input type="hidden" id="chartCredit" value="{{json_encode($dataChartAll['credit'])}}">
           <input type="hidden" id="chartDebit" value="{{json_encode($dataChartAll['debit'])}}">
           <div class="box box-success">
@@ -61,7 +61,7 @@
             <!-- /.box-body -->
           </div>
         </div>
-        <div class="col-xs-6">
+        <div class="col-md-6 col-xs-12">
           <input type="hidden" id="chartCreditVerify" value="{{json_encode($dataChartVerified['credit'])}}">
           <input type="hidden" id="chartDebitVerify" value="{{json_encode($dataChartVerified['debit'])}}">
           <div class="box box-success">
