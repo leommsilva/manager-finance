@@ -93,7 +93,8 @@ class Transactions extends Repository
             $transactions = [];
             $month = (int) $params['month'];
             $year = (int) $params['year'];
-            for ($i=1; $i <= 12; $i++) {
+            $period = !empty($params['period']) ? $params['period'] : 12;
+            for ($i=1; $i <= $period; $i++) {
                 $transactions[] = [
                     'category_id' => $params['category_id'],
                     'user_id' => $this->user->id,
@@ -128,15 +129,22 @@ class Transactions extends Repository
 
     public function getToList($where = [])
     {
-        $data = [];
+        $list = [];
+        $totalDebit = 0;
+        $totalCredit = 0;
         foreach ($this->getAll($where) as $transaction) {
+            if ($transaction->category->type === 'c') {
+                $totalCredit+= $transaction->value;
+            } else {
+                $totalDebit+= $transaction->value;
+            }
             $type = ($transaction->category->type === 'c')
                 ? '<span class="text-green">Credit</span>'
                 : '<span class="text-red">Debit</span>';
             $verified = ($transaction->is_verified) 
                 ? '<a href="'. url('transactions/verify') . '/' . $transaction->id . '" class="btn btn-success"><i class="fa fa-thumbs-o-up"></i></a>'
                 : '<a href="'. url('transactions/verify') . '/' . $transaction->id . '" class="btn btn-danger"><i class="fa fa-thumbs-o-down"></i></a>';
-            $data[] = [
+            $list[] = [
                 'id' => $transaction->id,
                 'Type' => $type,
                 'Title' => $transaction->title,
@@ -147,7 +155,14 @@ class Transactions extends Repository
                 'Verified' => $verified,
             ];
         }
-        return $data;
+        return [
+                'list' => $list,
+                'totals' => [
+                    'debit' => (float) $totalDebit,
+                    'credit' => (float) $totalCredit,
+                    'total' => (float) ($totalCredit-$totalDebit)
+                ]
+            ];
     }
 
     public function delete($id)

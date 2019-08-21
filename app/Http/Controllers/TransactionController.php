@@ -21,8 +21,8 @@ class TransactionController extends Controller
         Transactions $repository,
         Categories $categoriesRepository
     ) {
-        $searchMonth = $request->input('search_month', '');
-        $searchYear = $request->input('search_year', '');
+        $searchMonth = $request->input('search_month', date('m'));
+        $searchYear = $request->input('search_year', date('Y'));
         $searchVerified = $request->input('search_is_verified', '');
         $searchType = $request->input('search_type', '');
         $where = [
@@ -31,8 +31,10 @@ class TransactionController extends Controller
             'type' => $searchType,
             'is_verified' => $searchVerified
         ];
+        $data = $repository->getToList($where);
         return view('transactions.list')->with([
-            'data' => $repository->getToList($where),
+            'data' => $data['list'],
+            'totals' => $data['totals'],
             'months' => $repository->months,
             'search_month' => $searchMonth,
             'search_year' => $searchYear,

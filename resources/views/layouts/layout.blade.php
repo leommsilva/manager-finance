@@ -371,18 +371,22 @@
 <!-- ChartJS -->
 <script src="{{url('assets/bower_components/chart.js/Chart.js')}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="{{url('js/jquery.mask.min.js')}}"></script>
+
 @if (\Route::current()->getName() == 'home')
   <script src="{{url('js/dashboard.js')}}"></script>
 @endif
 
 <script>
   $(document).ready(function () {
+    $('.money').mask('000000000000000.00', {reverse: true});
+    
     $('.sidebar-menu').tree()
 
     $('.datatable').DataTable({
         'paging'      : true,
-        'lengthChange': false,
-        'searching'   : false,
+        'lengthChange': true,
+        'searching'   : true,
         'ordering'    : true,
         'info'        : true,
         'autoWidth'   : false

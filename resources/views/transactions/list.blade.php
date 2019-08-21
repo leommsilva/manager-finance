@@ -19,10 +19,10 @@
         $next = $year + 5;
       @endphp
       <div class="row">
-        <div class="col-xs-12">
+        <div class="col-md-12">
           <div class="box box-info">
             <div class="box-header with-border">
-              <h3 class="box-title">Filter by month/year</h3>
+              <h3 class="box-title">Filter</h3>
             </div>
             @php
             $startYear = 2018;
@@ -67,12 +67,55 @@
                   </div>
                 </div>
                 <div class="box-footer">
+                  <button type="reset" class="btn btn-default">Reset</button>
                   <button type="submit" class="btn btn-info pull-right">Apply</button>
                 </div>
             </form>
+            <div class="col-md-12 align-items-center">
+              <div class="col-md-4">
+                <!-- small box -->
+                <div class="small-box bg-aqua">
+                  <div class="inner">
+                    <h3>€ {{$totals['credit']}}</h3>
+            
+                    <p>Total credit</p>
+                  </div>
+                  <div class="icon">
+                    <i class="ion ion-log-in"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <!-- small box -->
+                <div class="small-box bg-red">
+                  <div class="inner">
+                    <h3>€ {{$totals['debit']}}</h3>
+            
+                    <p>Total debit</p>
+                  </div>
+                  <div class="icon">
+                    <i class="ion ion-log-out"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <!-- small box -->
+                <div class="small-box @if($totals['total'] < 0) bg-red @else bg-green @endif">
+                  <div class="inner">
+                    <h3>€ {{$totals['total']}}</h3>
+            
+                    <p>Total</p>
+                  </div>
+                  <div class="icon">
+                    <i class="ion @if($totals['total'] < 0) ion-sad @else ion-happy @endif"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-
+      </div>
+      <div class="row">
         <div class="col-md-4">
           <div class="box box-info">
             <div class="box-header with-border">
@@ -95,7 +138,7 @@
                 <div class="form-group @error('value') has-error @enderror">
                   <label for="value" class="col-sm-2 control-label">Value</label>
                   <div class="col-sm-10">
-                    <input type="number" name="value" class="form-control" id="value" placeholder="22.00">
+                    <input type="text" name="value" class="form-control money" id="value" placeholder="22.00">
                     @error('value')
                       <span class="help-block">
                         <strong>{{ $message }}</strong>
@@ -119,12 +162,31 @@
                     @enderror
                   </div>
                 </div>
-                <div class="checkbox">
-                  <label>
-                   <input type="checkbox" name="is_recurrent" id="isRecurrent"> <strong>Is recurrent</strong> <small>(For 12 months)</small>
-                  </label>
+                <div class="form-group">
+                  <div class="col-sm-5">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" name="is_recurrent" id="isRecurrent"> <strong>Is recurrent</strong>
+                        </label>
+                      </div>
+                  </div>
+                  <label for="period" class="col-sm-2 control-label">Period recurrent</label>
+                  <div class="col-sm-5">
+                    <select name="period" id="period" class="form-control">
+                        <option value="2">2 months</option>
+                        <option value="3">3 months</option>
+                        <option value="4">4 months</option>
+                        <option value="5">5 months</option>
+                        <option value="6">6 months</option>
+                        <option value="7">7 months</option>
+                        <option value="8">8 months</option>
+                        <option value="9">9 months</option>
+                        <option value="10">10 months</option>
+                        <option value="11">11 months</option>
+                        <option value="12">12 months</option>
+                    </select>
+                  </div>
                 </div>
-                <br>
                 <div class="form-group">
                   <label for="month" class="col-sm-2 control-label">Month/Year</label>
                   <div class="col-sm-5">
@@ -144,7 +206,7 @@
                 </div>
               </div>
               <div class="box-footer">
-                <button type="submit" class="btn btn-default">Reset</button>
+                <button type="reset" class="btn btn-default">Reset</button>
                 <button type="submit" class="btn btn-info pull-right">Save</button>
               </div>
             </form>
