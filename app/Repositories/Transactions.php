@@ -76,6 +76,8 @@ class Transactions extends Repository
             ->where('t.user_id', $this->user->id)
             ->where('c.type', $type)
             ->where('t.year', $year)
+            ->where('t.deleted_at', null)
+            ->where('c.deleted_at', null)
             ->groupBy('t.month')
             ->orderBy('t.month');
 
