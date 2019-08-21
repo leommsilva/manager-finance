@@ -43,12 +43,13 @@ class Transactions extends Repository
         return $transactions->get();
     }
 
-    public function chartYear($year = null) {
+    public function chartYear($year = null, $verified = null)
+    {
         if (is_null($year)) {
             $year = date('Y');
         }
-        $queryCredit = $this->getChartQuery('c', $year);
-        $queryDebit = $this->getChartQuery('d', $year);
+        $queryCredit = $this->getChartQuery('c', $year, $verified);
+        $queryDebit = $this->getChartQuery('d', $year, $verified);
         $defaultData = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
         $data = [
             'debit' => $defaultData,
@@ -67,9 +68,9 @@ class Transactions extends Repository
         return $data;
     }
 
-    private function getChartQuery($type, $year)
+    private function getChartQuery($type, $year, $verified = null)
     {
-        return DB::table('categories as c')
+        $query = DB::table('categories as c')
             ->select(DB::raw('t.`month`, SUM(t.value) as total'))
             ->join('transactions as t', 't.category_id', '=', 'c.id')
             ->where('t.user_id', $this->user->id)
@@ -77,6 +78,11 @@ class Transactions extends Repository
             ->where('t.year', $year)
             ->groupBy('t.month')
             ->orderBy('t.month');
+
+        if (!is_null($verified)) {
+            $query->where('t.is_verified', $verified);
+        }
+        return $query;
     }
 
     public function save($params)

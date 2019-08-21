@@ -19,7 +19,8 @@ class HomeController extends Controller
         return view('home')->with([
             'months' => $repositoryTransactions->months,
             'yearSelected' => $yearSelected,
-            'dataChart' => $repositoryTransactions->chartYear($yearSelected)
+            'dataChartAll' => $repositoryTransactions->chartYear($yearSelected),
+            'dataChartVerified' => $repositoryTransactions->chartYear($yearSelected, true),
         ]);
     }
 }

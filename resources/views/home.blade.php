@@ -46,16 +46,31 @@
           </div>
         </div>
 
-        <div class="col-xs-12">
-          <input type="hidden" id="chartCredit" value="{{json_encode($dataChart['credit'])}}">
-          <input type="hidden" id="chartDebit" value="{{json_encode($dataChart['debit'])}}">
+        <div class="col-xs-6">
+          <input type="hidden" id="chartCredit" value="{{json_encode($dataChartAll['credit'])}}">
+          <input type="hidden" id="chartDebit" value="{{json_encode($dataChartAll['debit'])}}">
           <div class="box box-success">
             <div class="box-header with-border">
-              <h3 class="box-title">Gasto x Ganho</h3> <small>(De acordo com o ano selecionado.)</small>
+              <h3 class="box-title">Gasto x Ganho (Todos)</h3> <small>(De acordo com o ano selecionado.)</small>
             </div>
             <div class="box-body">
               <div class="chart">
                 <canvas id="barChart" style="height: 375px; width: 766px;" height="413" width="1378"></canvas>
+              </div>
+            </div>
+            <!-- /.box-body -->
+          </div>
+        </div>
+        <div class="col-xs-6">
+          <input type="hidden" id="chartCreditVerify" value="{{json_encode($dataChartVerified['credit'])}}">
+          <input type="hidden" id="chartDebitVerify" value="{{json_encode($dataChartVerified['debit'])}}">
+          <div class="box box-success">
+            <div class="box-header with-border">
+              <h3 class="box-title">Gasto x Ganho (Apenas verificados)</h3> <small>(De acordo com o ano selecionado.)</small>
+            </div>
+            <div class="box-body">
+              <div class="chart">
+                <canvas id="barChartVerify" style="height: 375px; width: 766px;" height="413" width="1378"></canvas>
               </div>
             </div>
             <!-- /.box-body -->
