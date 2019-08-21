@@ -18,7 +18,7 @@ class TransactionVerify extends FormRequest
         if (!$transaction) {
             return false;
         }
-        return $this->user()->id === $transaction->user_id;
+        return $this->user()->id == $transaction->user_id;
     }
 
     /**

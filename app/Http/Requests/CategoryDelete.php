@@ -18,7 +18,7 @@ class CategoryDelete extends FormRequest
         if (!$category) {
             return false;
         }
-        return (($this->user()->id === $category->user_id) && ($category->transactions->count() === 0));
+        return (($this->user()->id == $category->user_id) && ($category->transactions->count() === 0));
     }
 
     /**

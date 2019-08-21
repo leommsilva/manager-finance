@@ -45,7 +45,7 @@ class TransactionController extends Controller
     public function store(TransactionStore $request, Transactions $repository)
     {
         $repository->save($request->all());
-        return redirect('transactions');
+        return redirect()->back();
     }
 
     public function delete(TransactionDelete $request, Transactions $repository, $id)
