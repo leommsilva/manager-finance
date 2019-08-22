@@ -20,7 +20,7 @@
               <div class="box-header with-border">
                 <h3 class="box-title">Add category</h3>
               </div>
-                <form class="form-horizontal" action="{{url('categories')}}" method="POST">
+                <form class="form-horizontal" action="{{url('categories')}}" method="POST" autocomplete="off">
                   @csrf
                   <div class="box-body">
                     <div class="form-group @error('title') has-error @enderror">

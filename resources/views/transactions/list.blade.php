@@ -27,7 +27,7 @@
             @php
             $startYear = 2018;
             @endphp
-            <form class="form-horizontal">
+            <form class="form-horizontal" autocomplete="off">
               <div class="box-body">
                 <div class="form-group">
                   <label for="month" class="col-sm-2 control-label">Month/Year</label>
