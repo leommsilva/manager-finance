@@ -138,21 +138,16 @@ class Transactions extends Repository
             } else {
                 $totalDebit+= $transaction->value;
             }
-            $type = ($transaction->category->type === 'c')
-                ? '<span class="text-green">Credit</span>'
-                : '<span class="text-red">Debit</span>';
-            $verified = ($transaction->is_verified) 
-                ? '<a href="'. url('transactions/verify') . '/' . $transaction->id . '" class="btn btn-success"><i class="fa fa-thumbs-o-up"></i></a>'
-                : '<a href="'. url('transactions/verify') . '/' . $transaction->id . '" class="btn btn-danger"><i class="fa fa-thumbs-o-down"></i></a>';
+            $value = ($transaction->category->type === 'c')
+                ? '<span class="text-green"> + '.$transaction->value.'</span>'
+                : '<span class="text-red"> - '.$transaction->value.'</span>';
             $list[] = [
                 'id' => $transaction->id,
-                'Type' => $type,
                 'Title' => $transaction->title,
                 'Category' => $transaction->category->title,
-                'Value' => $transaction->value,
-                'Month' => $this->months[$transaction->month],
-                'Year' => $transaction->year,
-                'Verified' => $verified,
+                'Value' => $value,
+                'Month/Year' => $this->months[$transaction->month]. '/'. $transaction->year,
+                'is_verified' => $transaction->is_verified,
             ];
         }
         return [
