@@ -25,7 +25,7 @@
                             @if (!empty($actions['delete']))
                                 <a href="{{$actions['delete']}}/{{$entity['id']}}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                             @endif
-                            @if ($actions['verify'])
+                            @if (!empty($actions['verify']))
                                 @if ($entity['is_verified'])
                                     <a href="{{$actions['verify']}}/{{$entity['id']}}" class="btn btn-success"><i class="fa fa-thumbs-o-up"></i></a>
                                 @else
