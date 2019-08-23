@@ -208,7 +208,7 @@ class Transactions extends Repository
             $percent = ($value*100)/$total;
             $structure[] = [
                 'label' => $item->title,
-                'data' => (float) number_format((float)$percent, 2, '.', '')
+                'value' => (float) number_format((float)$percent, 2, '.', '')
             ];
         }
         return $structure;
