@@ -25,11 +25,13 @@ class TransactionController extends Controller
         $searchYear = $request->input('search_year', date('Y'));
         $searchVerified = $request->input('search_is_verified', '');
         $searchType = $request->input('search_type', '');
+        $searchCategoryId = $request->input('search_category_id', '');
         $where = [
             'month' => $searchMonth,
             'year' => $searchYear,
             'type' => $searchType,
-            'is_verified' => $searchVerified
+            'is_verified' => $searchVerified,
+            'category_id' => $searchCategoryId
         ];
         $data = $repository->getToList($where);
         return view('transactions.list')->with([
@@ -40,6 +42,7 @@ class TransactionController extends Controller
             'search_year' => $searchYear,
             'search_is_verified' => $searchVerified,
             'search_type' => $searchType,
+            'search_category_id' => $searchCategoryId,
             'categories' => $categoriesRepository->getToList()
         ]);
     }

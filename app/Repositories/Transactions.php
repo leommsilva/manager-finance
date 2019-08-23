@@ -36,6 +36,11 @@ class Transactions extends Repository
         if (!empty($where['is_verified']) || $where['is_verified'] == "0") {
             $transactions->where('transactions.is_verified', $where['is_verified']);
         }
+        
+        if (!empty($where['category_id'])) {
+            $transactions->where('transactions.category_id', $where['category_id']);
+        }
+
         if (!empty($where['type'])) {
             $transactions->join('categories', 'categories.id', 'transactions.category_id');
             $transactions->where('categories.type', $where['type']);
