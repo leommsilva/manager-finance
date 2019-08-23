@@ -54,7 +54,7 @@
           <div class="col-md-8">
               <div class="box">
                   <div class="box-header">
-                    <h3 class="box-title">Categories</h3>
+                    <h3 class="box-title">Categorias</h3>
                   </div>
                   <!-- /.box-header -->
                   <div class="box-body">
