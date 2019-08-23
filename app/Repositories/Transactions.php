@@ -179,4 +179,38 @@ class Transactions extends Repository
         $transaction->save();
         return $transaction;
     }
+
+    public function donuteChartMonth($month, $year, $verify = null)
+    {
+        $transactions = DB::table('categories as c')
+            ->select(DB::raw('c.`title`, SUM(t.value) as total'))
+            ->join('transactions as t', 't.category_id', '=', 'c.id')
+            ->where('t.user_id', $this->user->id)
+            ->where('c.type', 'd')
+            ->where('t.month', $month)
+            ->where('t.year', $year)
+            ->where('t.deleted_at', null)
+            ->where('c.deleted_at', null)
+            ->groupBy('c.title')
+            ->orderBy('c.title');
+
+        if (!is_null($verify)) {
+            $transactions->where('t.is_verified', $verify);
+        }
+        $result = $transactions->get();
+        $total = 0;
+        foreach ($result as $item) {
+            $total+=(float) $item->total;
+        }
+        $structure = [];
+        foreach ($result as $item) {
+            $value = (float) $item->total;
+            $percent = ($value*100)/$total;
+            $structure[] = [
+                'label' => $item->title,
+                'data' => (float) number_format((float)$percent, 2, '.', '')
+            ];
+        }
+        return $structure;
+    }
 }

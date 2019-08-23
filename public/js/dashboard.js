@@ -134,4 +134,81 @@ $(document).ready(function () {
 
     barChartOptions.datasetFill = false
     barChartVerify.Bar(barChartDataVerify, barChartOptions);
+
+    /*
+     * DONUT CHART
+     * -----------
+     */
+
+    var donutDataLast = JSON.parse($('#donutDataMonthLast').val());
+    var donutData = JSON.parse($('#donutDataMonth').val());
+    var donutDataNext = JSON.parse($('#donutDataMonthNext').val());
+    $.plot('#donut-chart-last', donutDataLast, {
+        series: {
+            pie: {
+                show: true,
+                radius: 1,
+                innerRadius: 0.5,
+                label: {
+                    show: true,
+                    radius: 2 / 3,
+                    formatter: labelFormatter,
+                    threshold: 0.1
+                }
+
+            }
+        },
+        legend: {
+            show: false
+        }
+    })
+    $.plot('#donut-chart', donutData, {
+        series: {
+            pie: {
+                show: true,
+                radius: 1,
+                innerRadius: 0.5,
+                label: {
+                    show: true,
+                    radius: 2 / 3,
+                    formatter: labelFormatter,
+                    threshold: 0.1
+                }
+
+            }
+        },
+        legend: {
+            show: false
+        }
+    })
+    $.plot('#donut-chart-next', donutDataNext, {
+        series: {
+            pie: {
+                show: true,
+                radius: 1,
+                innerRadius: 0.5,
+                label: {
+                    show: true,
+                    radius: 2 / 3,
+                    formatter: labelFormatter,
+                    threshold: 0.1
+                }
+
+            }
+        },
+        legend: {
+            show: false
+        }
+    })
 });
+
+/*
+   * Custom Label formatter
+   * ----------------------
+   */
+function labelFormatter(label, series) {
+    return '<div style="font-size:13px; text-align:center; padding:2px; color: #fff; font-weight: 600;">'
+        + label
+        + '<br>'
+        + Math.round(series.percent) + '%</div>'
+}

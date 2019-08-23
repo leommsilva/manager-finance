@@ -371,13 +371,23 @@
 <!-- DataTables -->
 <script src="{{url('assets/bower_components/datatables.net/js/jquery.dataTables.min.js')}}"></script>
 <script src="{{url('assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
-<!-- ChartJS -->
-<script src="{{url('assets/bower_components/chart.js/Chart.js')}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{url('js/jquery.mask.min.js')}}"></script>
 
 @if (\Route::current()->getName() == 'home')
+  <!-- ChartJS -->
+  <script src="{{url('assets/bower_components/chart.js/Chart.js')}}"></script>
+  <!-- FLOT CHARTS -->
+  <script src="{{url('assets/bower_components/Flot/jquery.flot.js')}}"></script>
+  <!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
+  <script src="{{url('assets/bower_components/Flot/jquery.flot.resize.js')}}"></script>
+  <!-- FLOT PIE PLUGIN - also used to draw donut charts -->
+  <script src="{{url('assets/bower_components/Flot/jquery.flot.pie.js')}}"></script>
+  <!-- FLOT CATEGORIES PLUGIN - Used to draw bar charts -->
+  <script src="{{url('assets/bower_components/Flot/jquery.flot.categories.js')}}"></script>
+
   <script src="{{url('js/dashboard.js')}}"></script>
+  
 @endif
 
 <script>
