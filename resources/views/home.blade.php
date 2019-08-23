@@ -21,7 +21,7 @@
     <!-- Main content -->
     <section class="content">
         <div class="row">
-          <div class="col-md-6 col-xs-12">
+          <div class="col-md-4 col-xs-12">
             <div class="box box-info">
               <div class="box-header with-border">
                 <h3 class="box-title">Adicionar transação</h3>
@@ -116,13 +116,12 @@
               </form>
             </div>
           </div>
-          <div class="col-md-6 col-xs-12">
+          <div class="col-md-8 col-xs-12">
             @php
             $last = $monthCurrent-1;
             $next = $monthCurrent+1;
             $lastMonth = ($monthCurrent == 1) ? 12 : $last;
             $nextMonth = ($monthCurrent == 12) ? 1 : $next;
-            // dd($donutDataMonthLast,$donutDataMonth,$donutDataMonthNext)
             @endphp
             <input type="hidden" id="donutDataMonthLast" value="{{json_encode($donutDataMonthLast)}}">
             <input type="hidden" id="donutDataMonth" value="{{json_encode($donutDataMonth)}}">
@@ -132,18 +131,18 @@
             <div class="box box-danger">
               <div class="box-header with-border">
                 <i class="fa fa-bar-chart-o"></i>
-                <h3 class="box-title">Maiores debitos</h3>
+                <h3 class="box-title">Percentual dos Debitos de acordo com a categoria</h3>
               </div>
               <div class="box-body">
-                <div class="col-md-8 col-xs-12">
-                  {{$months[$monthCurrent]}}
-                  <canvas id="pieChart" style="height:250px"></canvas>
-                </div>
-                <div class="col-md-6 col-xs-12">
+                <div class="col-md-3 col-xs-12">
                   {{$months[$lastMonth]}}
                   <canvas id="pieChartLast" style="height:250px"></canvas>
                 </div>
                 <div class="col-md-6 col-xs-12">
+                  {{$months[$monthCurrent]}}
+                  <canvas id="pieChart" style="height:250px"></canvas>
+                </div>
+                <div class="col-md-3 col-xs-12">
                   {{$months[$nextMonth]}}
                   <canvas id="pieChartNext" style="height:250px"></canvas>
                 </div>
