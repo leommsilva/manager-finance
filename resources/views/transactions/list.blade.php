@@ -27,7 +27,7 @@
             @php
             $startYear = 2018;
             @endphp
-            <form class="form-horizontal" autocomplete="off">
+            <form class="form-horizontal">
               <div class="box-body">
                 <div class="form-group">
                   <label for="month" class="col-sm-2 control-label">Month/Year</label>
@@ -121,7 +121,7 @@
             <div class="box-header with-border">
               <h3 class="box-title">Add transaction</h3>
             </div>
-            <form class="form-horizontal" action="{{url('transactions')}}" method="POST">
+            <form class="form-horizontal" action="{{url('transactions')}}" method="POST" autocomplete="off">
               @csrf
               <div class="box-body">
                 <div class="form-group @error('title') has-error @enderror">

@@ -33,7 +33,7 @@ class Transactions extends Repository
             $transactions->where('transactions.year', $where['year']);
         }
 
-        if (!empty($where['is_verified'])) {
+        if (!empty($where['is_verified']) || $where['is_verified'] == "0") {
             $transactions->where('transactions.is_verified', $where['is_verified']);
         }
         if (!empty($where['type'])) {
