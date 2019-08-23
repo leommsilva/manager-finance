@@ -3,11 +3,11 @@
 @section('content')
     <section class="content-header">
       <h1>
-        Transactions
+        Transações
       </h1>
       <ol class="breadcrumb">
-        <li><a href="{{url('')}}"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Transactions</li>
+        <li><a href="{{url('')}}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li class="active">Transações</li>
       </ol>
     </section>
 
@@ -22,7 +22,7 @@
         <div class="col-md-12">
           <div class="box box-info">
             <div class="box-header with-border">
-              <h3 class="box-title">Filter</h3>
+              <h3 class="box-title">Filtro</h3>
             </div>
             @php
             $startYear = 2018;
@@ -31,10 +31,10 @@
               <div class="box-body">
                 <div class="row">
                   <div class="form-group">
-                    <label for="month" class="col-sm-2 control-label">Month/Year</label>
+                    <label for="month" class="col-sm-2 control-label">Mês/Ano</label>
                     <div class="col-sm-2">
                       <select name="search_month" id="month" class="form-control">
-                        <option value="" >All</option>
+                        <option value="" >Todos</option>
                         @foreach ($months as $key=>$month)
                         <option value="{{$key}}" @if($search_month == $key) selected @endif>{{$month}}</option>
                         @endforeach
@@ -42,38 +42,38 @@
                     </div>
                     <div class="col-sm-2">
                       <select name="search_year" id="year" class="form-control">
-                        <option value="">All</option>
+                        <option value="">Todos</option>
                         @for ($i = $startYear; $i <= $next; $i++) 
                           <option value="{{$i}}" @if($search_year == $i) selected @endif>{{$i}}</option>
                         @endfor
                       </select>
                     </div>
-                    <label for="search_is_verified" class="col-sm-2 control-label">Verified</label>
+                    <label for="search_is_verified" class="col-sm-2 control-label">Verificados</label>
                     <div class="col-sm-2">
                       <select name="search_is_verified" id="search_is_verified" class="form-control">
-                        <option value="">All</option>
-                        <option value="1" @if($search_is_verified == '1') selected @endif>Yes</option>
-                        <option value="0" @if($search_is_verified == '0') selected @endif>No</option>
+                        <option value="">Todos</option>
+                        <option value="1" @if($search_is_verified == '1') selected @endif>Sim</option>
+                        <option value="0" @if($search_is_verified == '0') selected @endif>Não</option>
                       </select>
                     </div>
                   </div>
                 </div>
                 <div class="row">
                   <div class="form-group">
-                    <label for="search_type" class="col-sm-2 control-label">Type</label>
+                    <label for="search_type" class="col-sm-2 control-label">Tipo</label>
                     <div class="col-sm-2">
                       <select name="search_type" id="search_type" class="form-control">
-                        <option value="">All</option>
-                        <option value="c" @if($search_type == 'c') selected @endif>Credit</option>
-                        <option value="d" @if($search_type == 'd') selected @endif>Debit</option>
+                        <option value="">Todos</option>
+                        <option value="c" @if($search_type == 'c') selected @endif>Credito</option>
+                        <option value="d" @if($search_type == 'd') selected @endif>Debito</option>
                       </select>
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="search_category_id" class="col-sm-2 control-label">Category</label>
+                    <label for="search_category_id" class="col-sm-2 control-label">Categoria</label>
                     <div class="col-sm-2">
                       <select name="search_category_id" id="search_category_id" class="form-control">
-                        <option value="">All</option>
+                        <option value="">Todos</option>
                         @foreach($categories as $category)
                         <option value="{{$category['id']}}" @if($search_category_id == $category['id']) selected @endif>{{$category['Title']}} - ({!!$category['Type']!!})</option>
                         @endforeach
@@ -82,8 +82,7 @@
                   </div>
                 </div>
                 <div class="box-footer">
-                  <button type="reset" class="btn btn-default">Reset</button>
-                  <button type="submit" class="btn btn-info pull-right">Apply</button>
+                  <button type="submit" class="btn btn-info pull-right">Aplicar</button>
                 </div>
             </form>
             <div class="col-md-12 align-items-center">
@@ -93,7 +92,7 @@
                   <div class="inner">
                     <h3>€ {{$totals['credit']}}</h3>
             
-                    <p>Total credit</p>
+                    <p>Total de crédito</p>
                   </div>
                   <div class="icon">
                     <i class="ion ion-log-in"></i>
@@ -106,7 +105,7 @@
                   <div class="inner">
                     <h3>€ {{$totals['debit']}}</h3>
             
-                    <p>Total debit</p>
+                    <p>Total de debito</p>
                   </div>
                   <div class="icon">
                     <i class="ion ion-log-out"></i>
@@ -132,13 +131,13 @@
         <div class="col-md-4">
           <div class="box box-info">
             <div class="box-header with-border">
-              <h3 class="box-title">Add transaction</h3>
+              <h3 class="box-title">Adicionar transação</h3>
             </div>
             <form class="form-horizontal" action="{{url('transactions')}}" method="POST" autocomplete="off">
               @csrf
               <div class="box-body">
                 <div class="form-group @error('title') has-error @enderror">
-                  <label for="title" class="col-sm-2 control-label">Title</label>
+                  <label for="title" class="col-sm-2 control-label">Titulo</label>
                   <div class="col-sm-10">
                     <input type="text" name="title" class="form-control" id="title" placeholder="Jantar romantico">
                     @error('title')
@@ -149,7 +148,7 @@
                   </div>
                 </div>
                 <div class="form-group @error('value') has-error @enderror">
-                  <label for="value" class="col-sm-2 control-label">Value</label>
+                  <label for="value" class="col-sm-2 control-label">Valor</label>
                   <div class="col-sm-10">
                     <input type="text" name="value" class="form-control money" id="value" placeholder="22.00">
                     @error('value')
@@ -160,10 +159,10 @@
                   </div>
                 </div>
                 <div class="form-group @error('category_id') has-error @enderror">
-                  <label for="CategoryId" class="col-sm-2 control-label">Category</label>
+                  <label for="CategoryId" class="col-sm-2 control-label">Categoria</label>
                   <div class="col-sm-10">
                     <select name="category_id" id="CategoryId" class="form-control">
-                      <option value="">Categories</option>
+                      <option value="">Categorias</option>
                       @foreach($categories as $category)
                         <option value="{{$category['id']}}">{{$category['Title']}} - ({!!$category['Type']!!})</option>
                       @endforeach
@@ -179,11 +178,11 @@
                   <div class="col-sm-5">
                       <div class="checkbox">
                         <label>
-                          <input type="checkbox" name="is_recurrent" id="isRecurrent"> <strong>Is recurrent</strong>
+                          <input type="checkbox" name="is_recurrent" id="isRecurrent"> <strong>É recorrente</strong>
                         </label>
                       </div>
                   </div>
-                  <label for="period" class="col-sm-2 control-label">Period recurrent</label>
+                  <label for="period" class="col-sm-2 control-label">Periodo</label>
                   <div class="col-sm-5">
                     <select name="period" id="period" class="form-control">
                         <option value="2">2 months</option>
@@ -201,7 +200,7 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="month" class="col-sm-2 control-label">Month/Year</label>
+                  <label for="month" class="col-sm-2 control-label">Mês/Ano</label>
                   <div class="col-sm-5">
                     <select name="month" id="month" class="form-control">
                       @foreach ($months as $key=>$month)
@@ -219,8 +218,8 @@
                 </div>
               </div>
               <div class="box-footer">
-                <button type="reset" class="btn btn-default">Reset</button>
-                <button type="submit" class="btn btn-info pull-right">Save</button>
+                <button type="reset" class="btn btn-default">Limpar</button>
+                <button type="submit" class="btn btn-info pull-right">Adicionar</button>
               </div>
             </form>
           </div>
@@ -228,7 +227,7 @@
         <div class="col-md-8">
             <div class="box">
                 <div class="box-header">
-                  <h3 class="box-title">Transactions</h3>
+                  <h3 class="box-title">Transações</h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">

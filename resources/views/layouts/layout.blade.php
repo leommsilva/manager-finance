@@ -84,7 +84,7 @@
                         @csrf
                     </form>
                     <a href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();" class="btn btn-default btn-flat">Sign out</a>
+                                                     document.getElementById('logout-form').submit();" class="btn btn-default btn-flat">Sair</a>
                 </div>
               </li>
             </ul>
@@ -112,7 +112,7 @@
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
-        <li class="header">MAIN NAVIGATION</li>
+        <li class="header">Menu</li>
         <li>
           <a href="{{url('')}}">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
@@ -120,19 +120,14 @@
         </li>
         <li>
           <a href="{{url('categories')}}">
-            <i class="fa fa-server"></i> <span>Categories</span>
+            <i class="fa fa-server"></i> <span>Categorias</span>
           </a>
         </li>
         <li>
           <a href="{{url('transactions')}}">
-            <i class="fa fa-credit-card"></i> <span>Transactions</span>
+            <i class="fa fa-credit-card"></i> <span>Transações</span>
           </a>
         </li>
-        <!-- <li>
-          <a href="{{url('reports')}}">
-            <i class="fa fa-bar-chart-o"></i> <span>Reports</span>
-          </a>
-        </li> -->
       </ul>
     </section>
     <!-- /.sidebar -->

@@ -75,7 +75,7 @@
                         </label>
                       </div>
                     </div>
-                    <label for="period" class="col-sm-2 control-label">Periodo recorrente</label>
+                    <label for="period" class="col-sm-2 control-label">Periodo</label>
                     <div class="col-sm-5">
                       <select name="period" id="period" class="form-control">
                         <option value="2">2 meses</option>

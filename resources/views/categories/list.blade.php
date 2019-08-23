@@ -4,11 +4,11 @@
 <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Categories
+        Categorias
       </h1>
       <ol class="breadcrumb">
-        <li><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Categories</li>
+        <li><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li class="active">Categorias</li>
       </ol>
     </section>
 
@@ -18,13 +18,13 @@
           <div class="col-md-4">
             <div class="box box-info">
               <div class="box-header with-border">
-                <h3 class="box-title">Add category</h3>
+                <h3 class="box-title">Adicionar categoria</h3>
               </div>
                 <form class="form-horizontal" action="{{url('categories')}}" method="POST" autocomplete="off">
                   @csrf
                   <div class="box-body">
                     <div class="form-group @error('title') has-error @enderror">
-                      <label for="title" class="col-sm-2 control-label">Title</label>
+                      <label for="title" class="col-sm-2 control-label">Titulo</label>
                       <div class="col-sm-10">
                         <input type="text" class="form-control" id="title" name="title" placeholder="Alimentação">
                         @error('title')
@@ -35,18 +35,18 @@
                       </div>
                     </div>
                     <div class="form-group">
-                      <label for="type" class="col-sm-2 control-label">Type</label>
+                      <label for="type" class="col-sm-2 control-label">Tipo</label>
                       <div class="col-sm-10">
                         <select name="type" id="type" class="form-control">
-                          <option value="c">Credit</option>
-                          <option value="d">Debit</option>
+                          <option value="c">Credito</option>
+                          <option value="d">Debito</option>
                         </select>
                       </div>
                     </div>
                   </div>
                   <div class="box-footer">
-                    <button type="reset" class="btn btn-default">Reset</button>
-                    <button type="submit" class="btn btn-info pull-right">Save</button>
+                    <button type="reset" class="btn btn-default">Limpar</button>
+                    <button type="submit" class="btn btn-info pull-right">Adicionar</button>
                   </div>
               </form>
             </div>
