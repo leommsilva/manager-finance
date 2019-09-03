@@ -46,7 +46,7 @@ class HomeController extends Controller
         $lastMonth = ($monthCurrent == 1) ? 12 : $last;
         $nextMonth = ($monthCurrent == 12) ? 1 : $next;
 
-        $yearCurrent = (int) date('y');
+        $yearCurrent = (int) date('Y');
         $last = $monthCurrent-1;
         $next = $monthCurrent+1;
         $lastMonth = ($monthCurrent == 1) ? 12 : $last;
