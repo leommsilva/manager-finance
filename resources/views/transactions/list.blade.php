@@ -176,6 +176,20 @@
                   @enderror
                 </div>
               </div>
+              <div class="form-group @error('is_verified') has-error @enderror">
+                <label for="isVerified" class="col-sm-2 control-label">Verificado</label>
+                <div class="col-sm-10">
+                  <select name="is_verified" id="isVerified" class="form-control">
+                    <option value="0">Não</option>
+                    <option value="1">Sim</option>
+                  </select>
+                  @error('category_id')
+                  <span class="help-block">
+                    <strong>{{ $message }}</strong>
+                  </span>
+                  @enderror
+                </div>
+              </div>
               <div class="form-group">
                 <div class="col-sm-5">
                   <div class="checkbox">

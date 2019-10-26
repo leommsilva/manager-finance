@@ -125,6 +125,7 @@ class Transactions extends Repository
             $transaction->title = $params['title'];
             $transaction->value = $params['value'];
             $transaction->is_recurrent = isset($params['is_recurrent']);
+            $transaction->is_verified = $params['is_verified'] == "1";
             $transaction->month = $params['month'];
             $transaction->year = $params['year'];
             $transaction->save();
