@@ -247,12 +247,12 @@
           <!-- /.box-header -->
           <div class="box-body">
             @if(!empty($data))
-            @include('includes.datatables', ['data' => $data, 'actions' => [
-            'delete' => url('transactions/delete'),
-            'verify' => url('transactions/verify'),
-            ]
-            ]
-            )
+            @include('includes.datatables', [
+              'data' => $data, 'actions' => [
+                'delete' => url('transactions/delete'),
+                'verify' => url('transactions/verify'),
+              ]
+            ])
             @endif
           </div>
           <!-- /.box-body -->

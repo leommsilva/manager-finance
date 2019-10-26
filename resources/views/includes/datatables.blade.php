@@ -3,7 +3,11 @@
         <tr>
             @foreach(end($data) as $key=>$value)
                 @if(!in_array($key, ['id', 'is_verified']))
-                    <th>{{$key}}</th>
+                    @if(in_array($key, ['Category', 'Month/Year']))
+                        <th class="hidden-xs hidden-sm">{{$key}}</th>
+                    @else
+                        <th>{{$key}}</th>
+                    @endif
                 @endif
             @endforeach
             @if(!empty($actions))
@@ -16,7 +20,11 @@
             <tr>
                 @foreach($entity as $key=>$attr)
                     @if(!in_array($key, ['id', 'is_verified']))
-                        <td>{!!$attr!!}</td>
+                        @if(in_array($key, ['Category', 'Month/Year']))
+                            <td class="hidden-xs hidden-sm">{!!$attr!!}</td>
+                        @else
+                            <td>{!!$attr!!}</td>
+                        @endif
                     @endif
                 @endforeach
                 @if(!empty($actions))
